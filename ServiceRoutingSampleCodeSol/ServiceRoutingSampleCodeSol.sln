@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceVersion1", "ServiceVersion1\ServiceVersion1.csproj", "{ECCC25E2-2D37-44B2-B672-2AE47BE9BD40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceVersion2", "ServiceVersion2\ServiceVersion2.csproj", "{1F0DE4F3-63B9-410A-B44D-77871AFB0A78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceRoutingClient", "ServiceRoutingClient\ServiceRoutingClient.csproj", "{CF8C16EA-36D9-4FC4-84FB-634794B512A6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ECCC25E2-2D37-44B2-B672-2AE47BE9BD40} = {ECCC25E2-2D37-44B2-B672-2AE47BE9BD40}
+		{B7C3E9E8-93E1-454B-9FAC-B5AF82FA9B85} = {B7C3E9E8-93E1-454B-9FAC-B5AF82FA9B85}
+		{1F0DE4F3-63B9-410A-B44D-77871AFB0A78} = {1F0DE4F3-63B9-410A-B44D-77871AFB0A78}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoutingService", "RoutingService\RoutingService.csproj", "{B7C3E9E8-93E1-454B-9FAC-B5AF82FA9B85}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ECCC25E2-2D37-44B2-B672-2AE47BE9BD40} = {ECCC25E2-2D37-44B2-B672-2AE47BE9BD40}
+		{1F0DE4F3-63B9-410A-B44D-77871AFB0A78} = {1F0DE4F3-63B9-410A-B44D-77871AFB0A78}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceContractVersions", "ServiceContractVersions\ServiceContractVersions.csproj", "{7DFC228D-A36E-4004-8915-DE666759C4FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECCC25E2-2D37-44B2-B672-2AE47BE9BD40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECCC25E2-2D37-44B2-B672-2AE47BE9BD40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECCC25E2-2D37-44B2-B672-2AE47BE9BD40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECCC25E2-2D37-44B2-B672-2AE47BE9BD40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F0DE4F3-63B9-410A-B44D-77871AFB0A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F0DE4F3-63B9-410A-B44D-77871AFB0A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F0DE4F3-63B9-410A-B44D-77871AFB0A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F0DE4F3-63B9-410A-B44D-77871AFB0A78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF8C16EA-36D9-4FC4-84FB-634794B512A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF8C16EA-36D9-4FC4-84FB-634794B512A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF8C16EA-36D9-4FC4-84FB-634794B512A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF8C16EA-36D9-4FC4-84FB-634794B512A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7C3E9E8-93E1-454B-9FAC-B5AF82FA9B85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7C3E9E8-93E1-454B-9FAC-B5AF82FA9B85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7C3E9E8-93E1-454B-9FAC-B5AF82FA9B85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7C3E9E8-93E1-454B-9FAC-B5AF82FA9B85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DFC228D-A36E-4004-8915-DE666759C4FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DFC228D-A36E-4004-8915-DE666759C4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DFC228D-A36E-4004-8915-DE666759C4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DFC228D-A36E-4004-8915-DE666759C4FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
