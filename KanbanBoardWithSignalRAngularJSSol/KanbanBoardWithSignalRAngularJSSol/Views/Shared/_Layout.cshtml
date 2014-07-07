@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html ng-app="kanbanBoardApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .colStyle
+        {
+            margin-left: 30px;
+            padding-top: 10px;
+            margin-top: 20px;
+            border: 1px solid orange;
+            height: 1500px !important;
+        }
+
+        .modal
+        {
+            display: block;
+        }
+
+        .modal-content
+        {
+            background: lightgreen;
+            padding: 5px;
+        }
+    </style>
+
+
+</head>
+<body>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.0.3.js"></script>
+
+    <script src="~/AppScript/main.js"></script>
+    <script src="~/AppScript/draganddrop.js"></script>
+    <script src="~/AppScript/boardService.js"></script>
+    <script src="~/AppScript/boardCtrl.js"></script>
+
+</body>
+</html>

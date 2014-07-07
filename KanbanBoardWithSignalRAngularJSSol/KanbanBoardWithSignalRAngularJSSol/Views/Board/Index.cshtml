@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row" ng-controller="boardCtrl">         
+        <div class="col-lg-3 panel panel-primary colStyle" id="1" ui-on-Drop="onDrop($event,$data,col)" 
+            ng-repeat ="col in columns">
+            <div class="panel-heading" style="margin-bottom: 10px;">
+                <h3 class="panel-title">{{col.Name}}</h3>
+            </div>
+                <div class="thumbnail" ui-draggable="true" drag="task"                     
+                    ng-repeat="task in col.Tasks track by $index" style="margin-bottom: 10px;">
+                        <div class="caption">
+                            <h5><strong>{{task.Name}}</strong></h5>
+                            <p>{{task.Description}}</p>
+                            <p><a href="#" class="btn btn-primary btn-sm" role="button">Edit</a></p>
+                        </div>
+                    </div>
+        </div>
+</div>
