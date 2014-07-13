@@ -8,12 +8,13 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <style>
         .colStyle
-        {
-            margin-left: 30px;
+        {            
+            margin-right: 10px;
+            width: 24%;
             padding-top: 10px;
             margin-top: 20px;
             border: 1px solid orange;
-            height: 1500px !important;
+            min-height: 500px;
         }
 
         .modal
@@ -32,9 +33,9 @@
 </head>
 <body>
 
-    <div class="container body-content">
+    
         @RenderBody()
-    </div>
+    
     <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>

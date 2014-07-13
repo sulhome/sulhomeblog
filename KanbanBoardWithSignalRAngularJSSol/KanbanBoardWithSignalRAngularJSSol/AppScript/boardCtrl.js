@@ -39,11 +39,6 @@
                     });
                     $scope.setLoading(true);                   
                 }
-                else
-                {                    
-                    $event.stopPropagation();                    
-                    $event.preventDefault();                    
-                }
 
             }, function (error) {
                 console.log(error);
