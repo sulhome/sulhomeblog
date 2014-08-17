@@ -1,36 +1,23 @@
 ﻿app.kanbanBoardApp.service('boardService', function ($, $http, $q, $rootScope) {
 
-    var setupHttpCall = function (callingMethod, methodName, params) {
-        var httpCallParam = {
-            method: callingMethod,
-            url: methodName,
-        };
-
-        if (params != null) {
-            httpCallParam['params'] = params;
-        }
-
-        var deferred = $q.defer();
-        $http(httpCallParam)
-        .success(function (data, status, headers, config) {
-            deferred.resolve(data);
-        })
-        .error(function (data, status) {
-            deferred.reject(data);
-        });
-        return deferred.promise;
-    }
-
-    var getColumns = function () {
-        return setupHttpCall('GET', 'GetColumns', null);
+    var getColumns = function () {        
+        return $http.get("/api/BoardWebApi").then(function (response) {
+            return response.data;
+        });        
     }
 
     var canMoveTask = function (sourceColIdVal, targetColIdVal) {
-        return setupHttpCall('GET', 'CanMove', { sourceColId: sourceColIdVal, targetColId: targetColIdVal });
+        return $http.get("/api/BoardWebApi/CanMove", { params: { sourceColId: sourceColIdVal, targetColId: targetColIdVal } })
+            .then(function (response) {
+                return response.data.canMove;
+        });        
     }
 
     var moveTask = function (taskIdVal, targetColIdVal) {
-        return setupHttpCall('POST', 'MoveTask', { taskId: taskIdVal, targetColId: targetColIdVal });     
+        return $http.post("/api/BoardWebApi/MoveTask", { taskId: taskIdVal, targetColId: targetColIdVal } )
+            .then(function (response) {
+                return response.status == 200;
+            });          
     };
 
     var proxy = null;

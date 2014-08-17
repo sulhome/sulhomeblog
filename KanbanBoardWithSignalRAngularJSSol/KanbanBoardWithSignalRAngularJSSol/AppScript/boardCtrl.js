@@ -1,74 +1,52 @@
 ﻿app.kanbanBoardApp.controller('boardCtrl', function ($scope, $modal, boardService) {
     $scope.columns = [];        
+    $scope.isLoading = false;
 
-    $scope.refreshBoard = function refreshBoard() {
-        $scope.setLoading(true);
+    $scope.refreshBoard = function refreshBoard() {        
+        $scope.isLoading = true;
         boardService.getColumns()
-           .then(function (data) {
-               $scope.setLoading(false);
+           .then(function (data) {               
+               $scope.isLoading = false;
                $scope.columns = data;
-           }, function (error) {
-               $scope.setLoading(false);
-               console.log(error);
-           });        
+           }, onError);
     };
 
     function init() {        
-        $scope.setLoading(true);        
+        $scope.isLoading = true;
         boardService.initialize().then(function (data) {
-            $scope.setLoading(false);
+            $scope.isLoading = false;
             $scope.refreshBoard();
         }, function () {
-            $scope.setLoading(false);            
+            $scope.isLoading = false;
         });
         
     };   
 
     $scope.onDrop = function ($event, $data, targetCol) {        
         boardService.canMoveTask($data.ColumnId, targetCol.Id)
-            .then(function (canMove) {
-                canMove = angular.fromJson(canMove);
+            .then(function (canMove) {                
                 if (canMove) {                 
-                    boardService.moveTask($data.Id, targetCol.Id).then(function (data) {
-                        $scope.setLoading(false);
+                    boardService.moveTask($data.Id, targetCol.Id).then(function (taskMoved) {
+                        $scope.isLoading = false;
                         $scope.refreshBoard();
                         boardService.sendRequest();
-                    }, function (error) {
-                        $scope.setLoading(false);
-                        console.log(error);
-                    });
-                    $scope.setLoading(true);                   
+                    }, onError);
+                    $scope.isLoading = true;
                 }
 
-            }, function (error) {
-                console.log(error);
-            });
+            }, onError);
     };
 
-    $scope.busyIndicatorOpened = false;
-
-    $scope.setLoading = function (loadingFlag) {
-        if (loadingFlag && !$scope.busyIndicatorOpened) {
-            $scope.busyIndicatorOpened = false;
-            $scope.modalInstance =
-            $modal.open({
-                templateUrl: '/AppScript/busymodal.html',
-                backdrop: 'static',
-                keyboard: false
-            });
-            $scope.busyIndicatorOpened = true;
-        }
-        else if (!loadingFlag && $scope.busyIndicatorOpened) {
-            if ($scope.modalInstance) {
-                $scope.modalInstance.dismiss('cancel');
-                $scope.busyIndicatorOpened = false;
-            }
-        }
-    }
+    $scope.busyIndicatorOpened = false;    
 
     $scope.$parent.$on("refreshBoard", function (e) {
         $scope.refreshBoard();        
     });
+
+    var onError = function (error) {
+        $scope.isLoading = false;
+        console.log(error);
+    };
 
     init();
 });

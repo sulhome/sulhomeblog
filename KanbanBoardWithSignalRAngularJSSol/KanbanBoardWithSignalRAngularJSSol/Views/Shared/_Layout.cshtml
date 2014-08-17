@@ -16,16 +16,30 @@
             border: 1px solid orange;
             min-height: 500px;
         }
-
-        .modal
-        {
-            display: block;
+               
+        .flyover .alert {
+            left: 40%;
+            top: 5%;
+            position: fixed;
+            z-index: 1050;
+            width: 400px;
+            height: 40px; 
+            padding-left: 10px;
+            padding-top:10px;
+            background-color:lightgreen;
+            color:black;
+            border-color: transparent;
         }
 
-        .modal-content
-        {
-            background: lightgreen;
-            padding: 5px;
+        .flyover .mask {
+            top: 0;
+            left: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+            background: black;
+            z-index: 1049;
         }
     </style>
 

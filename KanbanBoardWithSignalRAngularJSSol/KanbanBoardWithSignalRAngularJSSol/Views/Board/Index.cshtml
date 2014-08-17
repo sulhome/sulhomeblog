@@ -1,9 +1,13 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+
 <div style="width:80%; margin: 0 auto 0 auto;">
     
         <div class="row" ng-controller="boardCtrl">
+           
+            <div ng-include="'/AppScript/busyModal.html'" ng-show="isLoading"></div>
+
             <div class="col-lg-3 panel panel-primary colStyle" id="1" ui-on-drop="onDrop($event,$data,col)"
                  ng-repeat="col in columns">
                 <div class="panel-heading" style="margin-bottom: 10px;">
