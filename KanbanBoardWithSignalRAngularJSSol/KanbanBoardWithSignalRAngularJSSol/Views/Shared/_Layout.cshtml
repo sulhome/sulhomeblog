@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/toastr.css" rel="stylesheet" />
     <style>
         .colStyle
         {            
@@ -17,7 +18,7 @@
             min-height: 500px;
         }
                
-        .flyover .alert {
+        .busyIndicator .alert {
             left: 40%;
             top: 5%;
             position: fixed;
@@ -31,7 +32,7 @@
             border-color: transparent;
         }
 
-        .flyover .mask {
+        .busyIndicator .backgroundMask {
             top: 0;
             left: 0;
             position: fixed;
@@ -41,6 +42,11 @@
             background: black;
             z-index: 1049;
         }
+
+        .over {
+                background-color:#fff;
+                border:2px dashed red;
+            }
     </style>
 
 
@@ -50,13 +56,14 @@
     
         @RenderBody()
     
-    <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+    
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+    <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/jquery.signalR-2.0.3.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
 
     <script src="~/AppScript/main.js"></script>
-    <script src="~/AppScript/draganddrop.js"></script>
+    <script src="~/AppScript/kanbanBoardDragDrop.js"></script>
     <script src="~/AppScript/boardService.js"></script>
     <script src="~/AppScript/boardCtrl.js"></script>
 

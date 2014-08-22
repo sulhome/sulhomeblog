@@ -1,6 +1,14 @@
-﻿app.kanbanBoardApp.controller('boardCtrl', function ($scope, $modal, boardService) {
+﻿sulhome.kanbanBoardApp.controller('boardCtrl', function ($scope, boardService) {
     $scope.columns = [];        
     $scope.isLoading = false;
+
+    function init() {
+        $scope.isLoading = true;
+        boardService.initialize().then(function (data) {
+            $scope.isLoading = false;
+            $scope.refreshBoard();
+        }, onError);
+    };
 
     $scope.refreshBoard = function refreshBoard() {        
         $scope.isLoading = true;
@@ -9,26 +17,14 @@
                $scope.isLoading = false;
                $scope.columns = data;
            }, onError);
-    };
+    };    
 
-    function init() {        
-        $scope.isLoading = true;
-        boardService.initialize().then(function (data) {
-            $scope.isLoading = false;
-            $scope.refreshBoard();
-        }, function () {
-            $scope.isLoading = false;
-        });
-        
-    };   
-
-    $scope.onDrop = function ($event, $data, targetCol) {        
-        boardService.canMoveTask($data.ColumnId, targetCol.Id)
+    $scope.onDrop = function (data, targetColId) {        
+        boardService.canMoveTask(data.ColumnId, targetColId)
             .then(function (canMove) {                
                 if (canMove) {                 
-                    boardService.moveTask($data.Id, targetCol.Id).then(function (taskMoved) {
-                        $scope.isLoading = false;
-                        $scope.refreshBoard();
+                    boardService.moveTask(data.Id, targetColId).then(function (taskMoved) {
+                        $scope.isLoading = false;                        
                         boardService.sendRequest();
                     }, onError);
                     $scope.isLoading = true;
@@ -37,15 +33,14 @@
             }, onError);
     };
 
-    $scope.busyIndicatorOpened = false;    
-
     $scope.$parent.$on("refreshBoard", function (e) {
-        $scope.refreshBoard();        
+        $scope.refreshBoard();
+        toastr.success("Board updated successfully", "Success");
     });
 
-    var onError = function (error) {
+    var onError = function (errorMessage) {
         $scope.isLoading = false;
-        console.log(error);
+        toastr.error(errorMessage, "Error");
     };
 
     init();

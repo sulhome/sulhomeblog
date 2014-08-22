@@ -1,4 +1,4 @@
 ﻿// application global namespace
-app = {};
-app.kanbanBoardApp = angular.module('kanbanBoardApp', ['ngDragDrop', 'ui.bootstrap']);
-app.kanbanBoardApp.value('$', $);
+var sulhome = sulhome || {};
+sulhome.kanbanBoardApp = angular.module('kanbanBoardApp',[]);
+sulhome.kanbanBoardApp.value('$', $);

@@ -1,9 +1,6 @@
 ﻿using KanbanBoardWithSignalRAngularJSSol.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -30,18 +27,17 @@ namespace KanbanBoardWithSignalRAngularJSSol.Controllers
             var repo = new BoardRepository();
             var response = Request.CreateResponse();
             response.StatusCode = HttpStatusCode.OK;
-            response.Content = new StringContent(JsonConvert.SerializeObject(new { canMove = false }));            
+            response.Content = new StringContent(JsonConvert.SerializeObject(new { canMove = false }));
 
             if (sourceColId == (targetColId - 1))
             {
-                response.Content = new StringContent(JsonConvert.SerializeObject(new {canMove = true}));
+                response.Content = new StringContent(JsonConvert.SerializeObject(new { canMove = true }));
             }
 
             return response;
         }
 
-        [HttpPost]
-        //[System.Web.Http.AcceptVerbs("POST")]
+        [HttpPost]        
         public HttpResponseMessage MoveTask(JObject moveTaskParams)
         {
             dynamic json = moveTaskParams;
