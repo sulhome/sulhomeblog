@@ -20,6 +20,7 @@ sulhome.kanbanBoardApp.directive('kanbanBoardDrop', function () {
 
             var dragOverClass = attrs.kanbanBoardDrop;
 
+            //  Prevent the default behavior. This has to be called in order for drob to work
             cancel = function (event) {
                 if (event.preventDefault) {
                     event.preventDefault();

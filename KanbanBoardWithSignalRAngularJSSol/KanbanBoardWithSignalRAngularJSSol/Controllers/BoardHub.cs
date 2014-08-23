@@ -10,7 +10,7 @@ namespace KanbanBoardWithSignalRAngularJSSol.Controllers
     [HubName("KanbanBoard")]
     public class BoardHub : Hub
     {
-        public void BoardUpdated()
+        public void NotifyBoardUpdated()
         {
             Clients.All.BoardUpdated();
         }

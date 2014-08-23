@@ -23,8 +23,7 @@ namespace KanbanBoardWithSignalRAngularJSSol.Controllers
 
         [HttpGet]
         public HttpResponseMessage CanMove(int sourceColId, int targetColId)
-        {
-            var repo = new BoardRepository();
+        {            
             var response = Request.CreateResponse();
             response.StatusCode = HttpStatusCode.OK;
             response.Content = new StringContent(JsonConvert.SerializeObject(new { canMove = false }));

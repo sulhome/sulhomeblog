@@ -1,4 +1,4 @@
-﻿sulhome.kanbanBoardApp.service('boardService', function ($, $http, $q, $rootScope) {
+﻿sulhome.kanbanBoardApp.service('boardService', function ($http, $q, $rootScope) {
     var proxy = null;
 
     var getColumns = function () {
@@ -29,10 +29,10 @@
     
     var initialize = function () {
 
-        connection = $.hubConnection();
+        connection = jQuery.hubConnection();
         this.proxy = connection.createHubProxy('KanbanBoard');
 
-        //Publishing an event when server pushes a message
+        //Listing to 'BoardUpdated' event that will be pushed from the SignalR server
         this.proxy.on('BoardUpdated', function () {
             $rootScope.$emit("refreshBoard");
         });
@@ -47,8 +47,8 @@
     };
 
     var sendRequest = function () {
-        //Invoking BoardUpdated method defined in hub
-        this.proxy.invoke('BoardUpdated');
+        // Call 'NotifyBoardUpdated' on SignalR server
+        this.proxy.invoke('NotifyBoardUpdated');
     };
 
     return {
