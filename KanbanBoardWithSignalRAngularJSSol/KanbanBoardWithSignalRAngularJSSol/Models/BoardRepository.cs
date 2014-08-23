@@ -52,14 +52,18 @@ namespace KanbanBoardWithSignalRAngularJSSol.Models
         {
             var columns = this.GetColumns();
             var targetColumn = this.GetColumn(targetColId);
+            
+            // Add task to the target column
             var task = this.GetTask(taskId);
             var sourceColId = task.ColumnId;
             task.ColumnId = targetColId;
             targetColumn.Tasks.Add(task);
-
+            
+            // Remove task from source column
             var sourceCol = this.GetColumn(sourceColId);
             sourceCol.Tasks.RemoveAll(t => t.Id == taskId);
 
+            // Update column collection
             columns.RemoveAll(c => c.Id == sourceColId || c.Id == targetColId);
             columns.Add(targetColumn);
             columns.Add(sourceCol);

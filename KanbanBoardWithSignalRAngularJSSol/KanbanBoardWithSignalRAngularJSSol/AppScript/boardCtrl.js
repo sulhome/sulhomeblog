@@ -1,5 +1,6 @@
 ﻿sulhome.kanbanBoardApp.controller('boardCtrl', function ($scope, boardService) {
-    $scope.columns = [];        
+    // Model
+    $scope.columns = [];
     $scope.isLoading = false;
 
     function init() {
@@ -33,6 +34,7 @@
             }, onError);
     };
 
+    // Listen to the 'refreshBoard' event and refresh the board as a result
     $scope.$parent.$on("refreshBoard", function (e) {
         $scope.refreshBoard();
         toastr.success("Board updated successfully", "Success");

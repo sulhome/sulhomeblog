@@ -32,7 +32,7 @@
         connection = jQuery.hubConnection();
         this.proxy = connection.createHubProxy('KanbanBoard');
 
-        //Listing to 'BoardUpdated' event that will be pushed from the SignalR server
+        // Listen to the 'BoardUpdated' event that will be pushed from SignalR server
         this.proxy.on('BoardUpdated', function () {
             $rootScope.$emit("refreshBoard");
         });
@@ -46,8 +46,8 @@
         });
     };
 
-    var sendRequest = function () {
-        // Call 'NotifyBoardUpdated' on SignalR server
+    // Call 'NotifyBoardUpdated' on SignalR server
+    var sendRequest = function () {        
         this.proxy.invoke('NotifyBoardUpdated');
     };
 

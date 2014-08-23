@@ -41,7 +41,7 @@ namespace KanbanBoardWithSignalRAngularJSSol.Controllers
         {
             dynamic json = moveTaskParams;
             var repo = new BoardRepository();
-            repo.MoveTask(int.Parse(json.taskId.Value.ToString()), int.Parse(json.targetColId.Value.ToString()));
+            repo.MoveTask((int)json.taskId, (int)json.targetColId);
                        
             var response = Request.CreateResponse();
             response.StatusCode = HttpStatusCode.OK;
