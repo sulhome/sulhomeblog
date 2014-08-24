@@ -1,0 +1,13 @@
+﻿@inherits MVCWithAutofac.Web.BasePages.CustomBasePage
+@{
+    ViewBag.Title = "Team Details";
+    var team = repo.GetById<MVCWithAutofac.Core.Model.Team>(ViewBag.TeamId);
+}
+
+<h2>Team Details: @team.Name</h2>
+<ul>
+    @foreach (var teamMember in teamRepo.GetUsersInTeam(team.Id))
+    {
+        <li style="margin-left: 20px;">@teamMember.Name</li>
+    }
+</ul>

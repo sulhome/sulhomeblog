@@ -1,0 +1,12 @@
+﻿@model List<MVCWithAutofac.Core.Model.Team>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<ul>
+    @foreach (var team in Model)
+    {
+        <li>@Html.ActionLink(@team.Name,"TeamDetails",new {id = team.Id},null) | @team.Description </li>
+    }
+</ul>
